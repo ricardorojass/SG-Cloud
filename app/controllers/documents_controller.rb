@@ -23,6 +23,9 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     @document.save
+    session = GoogleDrive.login_with_oauth(current_user.uid)
+    session.upload_from_string(
+    "", :content_type => "application/vnd.google-apps.document")
     respond_with(@document)
   end
 
