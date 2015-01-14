@@ -233,6 +233,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  require "omniauth-google-oauth2"
+  config.omniauth :google_oauth2, "749676662433-t9p9fa2ink2im2ocj8abcakldq6lear3.apps.googleusercontent.com", "TazUEMCsgPD38jUAveKOpSNV", scope: "userinfo.email, userinfo.profile, https://www.googleapis.com/auth/drive" 
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -256,6 +258,4 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
-  config.omniauth :google_oauth2, "749676662433-t9p9fa2ink2im2ocj8abcakldq6lear3.apps.googleusercontent.com", "TazUEMCsgPD38jUAveKOpSNV", scope: "userinfo.email, userinfo.profile, https://www.googleapis.com/auth/drive" 
 end
