@@ -23,9 +23,17 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     @document.save
-    session = GoogleDrive.login_with_oauth(current_user.uid)
-    session.upload_from_string(
-    "", :content_type => "application/vnd.google-apps.document")
+    puts "Session: #{session[:access_token]}"
+    response = Unirest.post "https://www.googleapis.com/drive/v2/files", 
+      headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
+      parameters: {title: "ricardo", mimetype: "application/vnd.google-apps.document" }.to_json
+
+    puts response.code
+    puts response.body["id"]
+
+    #s = GoogleDrive.login_with_oauth(session[:access_token])
+    #s.upload_from_string(
+    #{}"Hello mundo.doc", "Hello", :content_type => "text/doc", :convert => false)
     respond_with(@document)
   end
 

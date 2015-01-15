@@ -14,7 +14,8 @@ gem "omniauth-google-oauth2"
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-
+gem 'google_drive'
+gem 'unirest'
 
 group :development, :test do
   gem 'byebug'
