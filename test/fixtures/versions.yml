@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  document_id: 
+  ubication: MyString
+  docdrive_id: MyString
+
+two:
+  number: MyString
+  document_id: 
+  ubication: MyString
+  docdrive_id: MyString
