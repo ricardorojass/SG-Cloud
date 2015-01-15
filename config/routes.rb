@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   get 'version/destroy'
 
-  resources :documents
+  resources :documents do
+    resources :verions
+  end
 
   get 'pages/home'
 
