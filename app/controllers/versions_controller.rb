@@ -1,4 +1,4 @@
-class VersionController < ApplicationController
+class VersionsController < ApplicationController
   def create
     @document = Document.find(params[:document_id])
     @version  = @document.versions.create(versions_params)
