@@ -1,20 +1,16 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
     @documents = Document.all
-    respond_with(@documents)
   end
 
   def show
-    respond_with(@document)
   end
 
   def new
     @document = Document.new
-    respond_with(@document)
+    @document.build_current_version
   end
 
   def edit
@@ -22,29 +18,41 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
+    @document.current_version.number = @document.versions.count + 1
     @document.save
     puts "Session: #{session[:access_token]}"
-    response = Unirest.post "https://www.googleapis.com/drive/v2/files", 
+    response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
       headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
-      parameters: {title: "test.doc", mimetype: "application/vnd.google-apps.document" }.to_json
+      parameters: {title: "doc-#{@document.id}", mimeType: "application/vnd.google-apps.document" }.to_json
 
     puts response.code
-    puts response.body["id"]
+    drive_id = response.body["id"]
+    @document.current_version.docdrive_id = drive_id
+    redirect_to documents_path
 
     #s = GoogleDrive.login_with_oauth(session[:access_token])
     #s.upload_from_string(
     #{}"Hello mundo.doc", "Hello", :content_type => "text/doc", :convert => false)
-    respond_with(@document)
   end
 
   def update
-    @document.update(document_params)
-    respond_with(@document)
+    respond_to do |format|
+      if @document.update(document_params)
+        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.json { render :show, status: :ok, location: @document }
+      else
+        format.html { render :edit }
+        format.json { render json: @document.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @document.destroy
-    respond_with(@document)
+    respond_to do |format|
+      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -53,6 +61,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, :ubication)
+      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication])
     end
 end

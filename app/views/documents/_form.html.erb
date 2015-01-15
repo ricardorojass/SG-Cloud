@@ -23,10 +23,13 @@
     <%= f.label :type %><br>
     <%= f.text_field :type %>
   </div>
-  <div class="field">
-    <%= f.label :ubication %><br>
-    <%= f.text_field :ubication %>
-  </div>
+  
+  <%= f.fields_for :current_version, @document.current_version do |builder| %>
+     <div class="field">
+       <%= render 'version_fields', f: builder %>
+     </div>
+   <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

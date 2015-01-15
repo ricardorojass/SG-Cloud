@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'version/create'
+
+  get 'version/destroy'
+
   resources :documents
 
   get 'pages/home'
