@@ -28,6 +28,7 @@ class DocumentsController < ApplicationController
     puts response.code
     drive_id = response.body["id"]
     @document.current_version.docdrive_id = drive_id
+    @document.current_version.document_id = @document.id
     @document.current_version.save
     redirect_to documents_path
 

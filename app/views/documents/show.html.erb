@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Code:</strong>
   <%= @document.code %>
@@ -15,6 +13,51 @@
   <%= @document.type %>
 </p>
 
+<p>
+  <strong>Number:</strong>
+  <%= @document.current_version.number %>
+</p>
+
+<p>
+  <strong>Ubication:</strong>
+  <%= @document.current_version.ubication %>
+</p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
+
+<h2>Versions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Fecha</th>
+      <th>Ubication</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @document.versions.each do |version| %>
+      <tr>
+        <td><%= version.number %></td>
+        <td><%= version.created_at %></td>
+        <td><%= version.ubication %></td>
+        <td><a href="<%= version.docs_url %>" target="_blank">Show Document</a></td>
+        <td><%= link_to 'Edit', edit_document_version_path(@document, version) %></td>
+        <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Version', new_document_version_path(@document, @version) %>
+
+
+
+
+
+  

@@ -1,8 +1,15 @@
 class VersionsController < ApplicationController
+  
+  def new
+    @document = Document.find(params[:document_id])
+    @version = Version.new
+  end
+
   def create
     @document = Document.find(params[:document_id])
     @version  = @document.versions.create(versions_params)
-    @document.update(current_version: @version)
+    #@document.update(current_version: @version)
+    
 
     redirect_to document_path(@document)
   end
@@ -16,6 +23,6 @@ class VersionsController < ApplicationController
 
   private
     def versions_params
-      params.require(:version).permit(:number, :ubication)
+      params.require(:version).permit(:ubication)
     end
 end

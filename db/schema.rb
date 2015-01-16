@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115173020) do
+ActiveRecord::Schema.define(version: 20150116152456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(version: 20150115173020) do
 
   create_table "versions", force: :cascade do |t|
     t.string   "number"
-    t.integer  "document_id"
     t.string   "ubication"
     t.string   "docdrive_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "document_id"
   end
 
   add_index "versions", ["document_id"], name: "index_versions_on_document_id", using: :btree
