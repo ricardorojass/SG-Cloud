@@ -1,3 +1,25 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar{
+  margin-bottom: 0;
+}
+
+.button-red{
+  background-color: #D14836;
+  margin: 280px auto;
+}
+
+.button-red:hover{
+  background-color: #C53727; 
+}
+
+.content-main{
+  height: 650px;
+  background: url('https://ununsplash.imgix.net/photo-1415201179613-bd037ff5eb29?q=75&fm=jpg&s=750bf3cbc777d5e274b76dc9d30b4925')
+}
+
+.text-white a:visited{
+  color: white;
+}
