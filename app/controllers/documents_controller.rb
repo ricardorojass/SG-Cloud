@@ -23,7 +23,7 @@ class DocumentsController < ApplicationController
     puts "Session: #{session[:access_token]}"
     response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
       headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
-      parameters: {title: "doc-#{@document.id}", mimeType: "application/vnd.google-apps.document" }.to_json
+      parameters: {title: "doc-#{@document.code}", mimeType: "application/vnd.google-apps.document" }.to_json
 
     puts response.code
     drive_id = response.body["id"]
@@ -66,6 +66,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication])
+      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication, :application_date])
     end
 end
