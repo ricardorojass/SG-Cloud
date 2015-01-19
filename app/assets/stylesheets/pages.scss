@@ -16,8 +16,13 @@
 }
 
 .content-main{
-  height: 650px;
-  background: url('https://ununsplash.imgix.net/photo-1415201179613-bd037ff5eb29?q=75&fm=jpg&s=750bf3cbc777d5e274b76dc9d30b4925')
+  background: url('https://ununsplash.imgix.net/photo-1415201179613-bd037ff5eb29?q=75&fm=jpg&s=750bf3cbc777d5e274b76dc9d30b4925');
+  background-attachment: scroll;
+  background-position: center center;
+  background-repeat: none;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
 }
 
 .text-white a:visited{
