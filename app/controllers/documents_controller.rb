@@ -23,14 +23,14 @@ class DocumentsController < ApplicationController
     puts "Session: #{session[:access_token]}"
     response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
       headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
-      parameters: {title: "doc-#{@document.code}", mimeType: "application/vnd.google-apps.document" }.to_json
+      parameters: {title: "doc-#{@document.id}", mimeType: "application/vnd.google-apps.document" }.to_json
 
     puts response.code
     drive_id = response.body["id"]
     @document.current_version.docdrive_id = drive_id
     @document.current_version.document_id = @document.id
-    title = response.body["title"]
-    @document.current_version.title = title
+    #title = response.body["title"]
+    #@document.current_version.title = title
     @document.current_version.save
     redirect_to documents_path
 
@@ -53,6 +53,8 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    response = Unirest.delete "https://www.googleapis.com/drive/v2/files/#{@document.current_version.docdrive_id}",
+    headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}
     @document.destroy
     respond_to do |format|
       format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
@@ -66,6 +68,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication, :application_date])
+      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication, :application_date, :title])
     end
 end

@@ -14,6 +14,13 @@
   <div class="form-documents">
     <%= f.text_field :code, placeholder: "Code"%>
   </div>
+
+  <%= f.fields_for :current_version, @document.current_version do |builder| %>
+     <div class="form-documents">
+       <%= builder.text_field :title, placeholder: "Title" %></br>
+     </div>
+  <% end %>
+
   <div class="form-documents">
     <%= f.text_field :origin, placeholder: "Origin"%>
   </div>
