@@ -8,6 +8,7 @@
     <thead>
       <tr class="head-table">
         <th>Code</th>
+        <th>Title</th>
         <th>Origin</th>
         <th>Type</th>
         <th>Number</th>
@@ -20,6 +21,7 @@
       <% @documents.each do |document| %>
         <tr>
           <td><%= document.code %></td>
+          <td><%= document.current_version.title %></td>
           <td><%= document.origin %></td>
           <td><%= document.type %></td>
           <td><%= document.current_version.number %></td>
