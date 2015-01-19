@@ -1,27 +1,26 @@
-<div class="container-fluid">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Code</th>
-          <th>Origin</th>
-          <th>Type</th>
-          <th>Number</th>
-          <th>Ubication</th>
-        </tr>
-      </thead>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr class="head-table">
+        <th>Code</th>
+        <th>Origin</th>
+        <th>Type</th>
+        <th>Number</th>
+        <th>Ubication</th>
+      </tr>
+    </thead>
 
-      <tbody>
-        <tr>
-          <td><%= @document.code %></td>
-          <td><%= @document.origin %></td>
-          <td><%= @document.type %></td>
-          <td><%= @document.current_version.number %></td>
-          <td><%= @document.current_version.ubication %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <tbody>
+      <tr>
+        <td><%= @document.code %></td>
+        <td><%= @document.origin %></td>
+        <td><%= @document.type %></td>
+        <td><%= @document.current_version.number %></td>
+        <td><%= @document.current_version.ubication %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
@@ -30,12 +29,14 @@
 
 
 <h2>Versions</h2>
-<%= link_to 'New Version', new_document_version_path(@document, @version), class: "btn btn-red" %>
+<div class="text-white">
+  <%= link_to 'New Version', new_document_version_path(@document, @version), class: "btn btn-danger" %>
+</div>
 
 <div class="table table-responsive">
-  <table class="table table-hover table-bordered">
+  <table class="table table-hover">
     <thead>
-      <tr>
+      <tr class="head-table">
         <th>Number</th>
         <th>Fecha</th>
         <th>Ubication</th>
@@ -59,7 +60,6 @@
 
 </div>
 
-</div>
 
 
 

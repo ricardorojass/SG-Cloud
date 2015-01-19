@@ -1,17 +1,18 @@
 <h1>Listing Documents</h1>
-
-  <%= link_to 'New Document', new_document_path, class: "btn btn-red" %>
+<div class="text-white">
+  <%= link_to 'New Document', new_document_path, class: "btn btn-danger" %>
+</div>
 
 <div class="table table-responsive">
-  <table class="table table-hover table-bordered">
+  <table class="table table-hover">
     <thead>
-      <tr>
+      <tr class="head-table">
         <th>Code</th>
         <th>Origin</th>
         <th>Type</th>
         <th>Number</th>
         <th>Ubication</th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
