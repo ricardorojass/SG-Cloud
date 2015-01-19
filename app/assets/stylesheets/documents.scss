@@ -1,3 +1,33 @@
 // Place all the styles related to the Documents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-documents input{
+  border: 0;
+  padding: 15px;
+  font-size: 1.5em;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.form-documents input[type="submit"]{
+  background: red;
+  color: white;
+  margin-top: 15px;
+}
+
+.btn-red{
+  background: red;
+  color: white;
+  margin: 10px 0;
+}
+
+.btn-red a{
+  color: white;
+}
+
+.btn-red:hover{
+  background: red;
+  color: white;
+}
+
+

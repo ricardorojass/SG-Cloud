@@ -11,26 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
+  <div class="form-documents">
+    <%= f.text_field :code, placeholder: "Code"%>
   </div>
-  <div class="field">
-    <%= f.label :origin %><br>
-    <%= f.text_field :origin %>
+  <div class="form-documents">
+    <%= f.text_field :origin, placeholder: "Origin"%>
   </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+  <div class="form-documents">
+    <%= f.text_field :type, placeholder: "Type"%>
   </div>
   
   <%= f.fields_for :current_version, @document.current_version do |builder| %>
-     <div class="field">
+     <div class="form-documents">
        <%= render 'version_fields', f: builder %>
      </div>
-   <% end %>
+  <% end %>
 
-  <div class="actions">
+  <div class="form-documents">
     <%= f.submit %>
   </div>
 <% end %>

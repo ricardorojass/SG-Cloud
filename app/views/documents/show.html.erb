@@ -1,61 +1,65 @@
-<p>
-  <strong>Code:</strong>
-  <%= @document.code %>
-</p>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Origin</th>
+          <th>Type</th>
+          <th>Number</th>
+          <th>Ubication</th>
+        </tr>
+      </thead>
 
-<p>
-  <strong>Origin:</strong>
-  <%= @document.origin %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @document.type %>
-</p>
-
-<p>
-  <strong>Number:</strong>
-  <%= @document.current_version.number %>
-</p>
-
-<p>
-  <strong>Ubication:</strong>
-  <%= @document.current_version.ubication %>
-</p>
+      <tbody>
+        <tr>
+          <td><%= @document.code %></td>
+          <td><%= @document.origin %></td>
+          <td><%= @document.type %></td>
+          <td><%= @document.current_version.number %></td>
+          <td><%= @document.current_version.ubication %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
 
+
+
 <h2>Versions</h2>
+<%= link_to 'New Version', new_document_version_path(@document, @version), class: "btn btn-red" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Fecha</th>
-      <th>Ubication</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @document.versions.each do |version| %>
+<div class="table table-responsive">
+  <table class="table table-hover table-bordered">
+    <thead>
       <tr>
-        <td><%= version.number %></td>
-        <td><%= version.created_at %></td>
-        <td><%= version.ubication %></td>
-        <td><a href="<%= version.docs_url %>" target="_blank">Show Document</a></td>
-        <td><%= link_to 'Edit', edit_document_version_path(@document, version) %></td>
-        <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Number</th>
+        <th>Fecha</th>
+        <th>Ubication</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @document.versions.each do |version| %>
+        <tr>
+          <td><%= version.number %></td>
+          <td><%= version.created_at %></td>
+          <td><%= version.ubication %></td>
+          <td><a href="<%= version.docs_url %>" target="_blank">Show Document</a></td>
+          <td><%= link_to 'Edit', edit_document_version_path(@document, version) %></td>
+          <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Version', new_document_version_path(@document, @version) %>
+</div>
 
+</div>
 
 
 
