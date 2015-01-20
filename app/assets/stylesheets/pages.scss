@@ -7,10 +7,43 @@
   margin-bottom: 0;
 }
 
+.navbar-brand:hover{
+  background: transparent;
+}
+
 .button-red{
   background-color: #D14836;
   padding: 1em; 
   margin: 40px auto;
+}
+
+.button-red:hover{
+  background-color: #C53727; 
+}
+
+.content-main{
+  background: url('https://ununsplash.imgix.net/photo-1414849424631-8b18529a81ca?q=75&fm=jpg&s=0e993004a2f3704e8f2ad5469315ccb7');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: none;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.footer{
+  height: 80px;
+  padding: 35px;
+}
+
+.grey{
+  color: #95a5a6
+}
+
+.logo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.5em;
+  font-weight: 100;
 }
 
 .text-sign-in a{
@@ -18,19 +51,7 @@
   font-size: 1.5em;
   font-weight: 100;
 }
-.button-red:hover{
-  background-color: #C53727; 
-}
 
-.content-main{
-  background: url('https://ununsplash.imgix.net/photo-1414849424631-8b18529a81ca?q=75&fm=jpg&s=0e993004a2f3704e8f2ad5469315ccb7');
-  background-attachment: scroll;
-  background-position: center center;
-  background-repeat: none;
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
-}
 
 .mr-btn-new{
   margin-top: 7px;
