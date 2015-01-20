@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.navbar{
+.nav-main{
+  background: white;
   margin-bottom: 0;
 }
 
@@ -25,6 +26,17 @@
   width: 100%;
 }
 
+.mr-btn-new{
+  margin-top: 7px;
+}
+
 .text-white a:visited{
   color: white;
+}
+
+.subnavbar{
+  background: #f7f7f7;
+  height: 48px;
+  border-bottom: 1px solid rgba(52, 73, 94, 0.3);
+  margin: 0;
 }

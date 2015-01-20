@@ -1,6 +1,16 @@
-<h1>Listing Documents</h1>
-<div class="text-white">
-  <%= link_to 'New Document', new_document_path, class: "btn btn-danger" %>
+<!-- Subnavbar -->
+<div class="navbar subnavbar">
+    <div class="collapse navbar-collapse">
+      <!-- Single button -->
+      <div class="btn-group mr-btn-new">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+           New <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<%= new_document_path %>">Document</a></li>
+        </ul>
+      </div> 
+    </div>
 </div>
 
 <div class="table table-responsive">
