@@ -7,7 +7,8 @@
            New <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<%= new_document_path %>">Document</a></li>
+          <li><a href="<%= new_document_path(doc_type: "doc") %>">Document - Word</a></li>
+          <li><a href="<%= new_document_path(doc_type: "excel") %>">Document - Excel</a></li>
         </ul>
       </div> 
     </div>
@@ -50,3 +51,4 @@
   </table>
 </div>
 <br>
+

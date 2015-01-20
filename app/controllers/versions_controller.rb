@@ -10,9 +10,8 @@ class VersionsController < ApplicationController
     @version  = @document.versions.build(versions_params)
     @version.number = @document.versions.count + 1 
     @version.save
-    response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
-      headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
-      parameters: {title: "doc-#{@version.id}", mimeType: "application/vnd.google-apps.document" }.to_json
+    response = Unirest.post "https://www.googleapis.com/drive/v2/files/#{@document.current_version.docdrive_id}/copy", 
+      headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}
 
       drive_id = response.body["id"]
       @version.docdrive_id = drive_id
