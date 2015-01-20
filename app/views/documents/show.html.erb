@@ -1,3 +1,18 @@
+<!-- Subnavbar -->
+<div class="navbar subnavbar">
+    <div class="collapse navbar-collapse">
+      <!-- Single button -->
+      <div class="btn-group mr-btn-new">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+           New <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<%= new_document_version_path(@document, @version) %>">Version</a></li>
+        </ul>
+      </div> 
+    </div>
+</div>
+
 <h2>Title: <%= @document.current_version.title%></h2>
 <div class="table-responsive">
   <table class="table">
@@ -9,6 +24,7 @@
         <th>Number</th>
         <th>Description</th>
         <th>Ubication</th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -20,21 +36,15 @@
         <td>#<%= @document.current_version.number %></td>
         <td><%= @document.current_version.description %></td>
         <td><%= @document.current_version.ubication %></td>
+        <td><%= link_to 'Edit', edit_document_path(@document), class: "btn btn-default" %></td>
+        <td><%= link_to 'Back', documents_path, class: "btn btn-default" %></td>
       </tr>
     </tbody>
   </table>
 </div>
-  
-
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
-
 
 
 <h2>Versions</h2>
-<div class="text-white">
-  <%= link_to 'New Version', new_document_version_path(@document, @version), class: "btn btn-danger" %>
-</div>
 
 <div class="table table-responsive">
   <table class="table table-hover">
@@ -58,8 +68,8 @@
           <td><%= version.description %></td>
           <td><%= version.ubication %></td>
           <td><a href="<%= version.docs_url %>" target="_blank">Show Document</a></td>
-          <td><%= link_to 'Edit', edit_document_version_path(@document, version) %></td>
-          <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_document_version_path(@document, version), class: "btn btn-default" %></td>
+          <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
         </tr>
       <% end %>
     </tbody>
