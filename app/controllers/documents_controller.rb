@@ -68,6 +68,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication, :application_date, :title])
+      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication, :title, :application_date, :description])
     end
 end

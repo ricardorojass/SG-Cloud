@@ -12,6 +12,8 @@
         <th>Origin</th>
         <th>Type</th>
         <th>Number</th>
+        <th>Apply date</th>
+        <th>Description</th>
         <th>Ubication</th>
         <th colspan="4"></th>
       </tr>
@@ -25,6 +27,8 @@
           <td><%= document.origin %></td>
           <td><%= document.type %></td>
           <td>#<%= document.current_version.number %></td>
+          <td><%= document.current_version.application_date %></td>
+          <td><%= document.current_version.description %></td>
           <td><%= document.current_version.ubication %></td>
           <td><a href="<%= document.current_version.docs_url %>" target="_blank">Show Document</a></td>
           <td><%= link_to 'Show', document %></td>
