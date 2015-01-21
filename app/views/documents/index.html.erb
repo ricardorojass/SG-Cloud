@@ -14,10 +14,11 @@
     </div>
 </div>
 
-<div class="table table-responsive">
-  <table class="table table-hover">
+<div class="table" >
+  <table id="documents" class="table table-hover" style="background: white;">
     <thead>
       <tr class="head-table">
+        <th>Status</th>
         <th>Code</th>
         <th>Title</th>
         <th>Origin</th>
@@ -26,13 +27,25 @@
         <th>Apply date</th>
         <th>Description</th>
         <th>Ubication</th>
-        <th colspan="4"></th>
+        <th colspan="5"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @documents.each do |document| %>
         <tr>
+          <td class="status <%= document.current_version.status %>">
+            <div class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-ok"></span></a>  
+                <ul class="dropdown-menu status-dropdown" role="menu">
+                  <% Version.statuses.each do |key, value| %>
+                    <li>
+                      <%= link_to key.humanize, document_version_status_path(document_id: document.id, version_id: document.current_version.id, status: value), remote: true %>
+                    </li>
+                  <% end %>
+                </ul>  
+            </div>
+          </td>
           <td><%= document.code %></td>
           <td><%= document.current_version.title %></td>
           <td><%= document.origin %></td>

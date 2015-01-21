@@ -34,8 +34,12 @@ class VersionsController < ApplicationController
     redirect_to @document
   end
 
+  def update_status
+    @version = Version.update(params[:version_id], status: params[:status].to_i)
+  end
+
   private
     def versions_params
-      params.require(:version).permit(:ubication, :title, :description, :application_date)
+      params.require(:version).permit(:ubication, :title, :description, :application_date, :status)
     end
 end
