@@ -36,6 +36,6 @@ class VersionsController < ApplicationController
 
   private
     def versions_params
-      params.require(:version).permit(:ubication)
+      params.require(:version).permit(:ubication, :title, :description, :application_date)
     end
 end
