@@ -16,6 +16,7 @@ class VersionsController < ApplicationController
       drive_id = response.body["id"]
       @version.docdrive_id = drive_id
       @version.document_id = @document.id
+      #version.doc_type = document.current_version.doc_type
 
     if @version.save
       @version.document_id = @document.id

@@ -41,7 +41,7 @@
           <td><%= document.current_version.application_date %></td>
           <td><%= document.current_version.description %></td>
           <td><%= document.current_version.ubication %></td>
-          <td><a href="<%= document.current_version.docs_url %>" target="_blank">Show Document</a></td>
+          <td><a href="<%= document.doc_url %>" target="_blank">Show Document</a></td>
           <td><%= link_to 'Show', document %></td>
           <td><%= link_to 'Edit', edit_document_path(document), class: "btn btn-default" %></td>
           <td class="text-white"><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>

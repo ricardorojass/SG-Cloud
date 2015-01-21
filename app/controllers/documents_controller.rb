@@ -20,15 +20,21 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.current_version.number = @document.versions.count + 1
     @document.save
+
+    mimeType = "application/vnd.google-apps.document"
+    if @document.doc_type == "excel"
+      mimeType = "application/vnd.google-apps.spreadsheet"
+    end
+
     puts "Session: #{session[:access_token]}"
     response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
       headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
-      parameters: {title: "doc-#{@document.id}", mimeType: "application/vnd.google-apps.document" }.to_json
+      parameters: {title: "doc-#{@document.id}", mimeType: mimeType }.to_json
 
-    puts response.code
     drive_id = response.body["id"]
     @document.current_version.docdrive_id = drive_id
     @document.current_version.document_id = @document.id
+
     #title = response.body["title"]
     #@document.current_version.title = title
     @document.current_version.save
@@ -68,6 +74,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, current_version_attributes: [:number, :ubication, :title, :application_date, :description])
+      params.require(:document).permit(:code, :origin, :type, :doc_type, current_version_attributes: [:number, :ubication, :title, :application_date, :description])
     end
 end
