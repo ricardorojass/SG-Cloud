@@ -7,15 +7,19 @@
            New <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<%= new_document_path(doc_type: "doc") %>">Document - Word</a></li>
-          <li><a href="<%= new_document_path(doc_type: "excel") %>">Document - Excel</a></li>
+          <li>
+            <%= link_to 'Document - Word', new_document_path(doc_type: "doc"), remote: true %>
+          </li>
+          <li>
+            <%= link_to 'Document - Excel', new_document_path(doc_type: "excel"), remote: true %>
+          </li>
         </ul>
       </div> 
     </div>
 </div>
 
 <div class="table" >
-  <table id="documents" class="table table-hover bg-white">
+  <table id="documents" class="table table-hover bg-white" id="doc-table">
     <thead>
       <tr class="head-table">
         <th>Status</th>

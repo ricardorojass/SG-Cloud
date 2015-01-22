@@ -36,7 +36,7 @@ class DocumentsController < ApplicationController
     @document.current_version.document_id = @document.id
 
     @document.current_version.save
-    redirect_to documents_path
+    #redirect_to documents_path
 
 
     #s = GoogleDrive.login_with_oauth(session[:access_token])
