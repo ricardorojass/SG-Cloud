@@ -1,0 +1,5 @@
+<% if !@document.versions.errors.empty? %>
+  alert("algo salio mal");
+<% else %>
+  $('.modal').modal('hide');
+<% end %>
