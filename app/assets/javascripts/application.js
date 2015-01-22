@@ -15,3 +15,12 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on("page:change", function() {
+  $("#documents").on("click", ".status-dropdown a", function(e) {
+      //e.stopPropagation();
+      //e.preventDefault();
+      //alert("yeah");
+      $(this).parent().dropdown("toggle");
+  });
+});

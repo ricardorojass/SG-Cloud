@@ -16,11 +16,9 @@ class VersionsController < ApplicationController
       drive_id = response.body["id"]
       @version.docdrive_id = drive_id
       @version.document_id = @document.id
-      #version.doc_type = document.current_version.doc_type
-
+      
     if @version.save
       @version.document_id = @document.id
-      #@document.update(current_version: @version)
       redirect_to document_path(@document)
     else
       render :new
@@ -32,6 +30,10 @@ class VersionsController < ApplicationController
     @versions = @document.versions.find(params[:id])
     @versions.destroy
     redirect_to @document
+  end
+
+  def update_status
+    @version = Version.update(params[:version_id], status: params[:status].to_i)
   end
 
   private

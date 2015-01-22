@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'version/destroy'
 
   resources :documents do
-    resources :versions
+    resources :versions do
+      get 'update_status', as: :status
+    end
   end
 
   get 'pages/home'
