@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'google_drive'
 gem 'unirest'
+gem 'thin'
 
 group :development, :test do
   gem 'byebug'
