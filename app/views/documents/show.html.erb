@@ -7,7 +7,9 @@
            New <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<%= new_document_version_path(@document, @version) %>">Version</a></li>
+          <li>
+            <%= link_to 'Version', new_document_version_path(@document, @version), remote: true %>
+          </li>
         </ul>
       </div> 
     </div>
