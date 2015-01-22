@@ -19,7 +19,7 @@
 </div>
 
 <div class="table" >
-  <table id="documents" class="table table-hover bg-white" id="doc-table">
+  <table id="documents" class="table table-hover bg-white">
     <thead>
       <tr class="head-table">
         <th>Status</th>
@@ -28,7 +28,6 @@
         <th>Origin</th>
         <th>Type</th>
         <th>Number</th>
-        <th>Apply date</th>
         <th>Description</th>
         <th>Ubication</th>
         <th colspan="5"></th>
@@ -55,7 +54,6 @@
           <td><%= document.origin %></td>
           <td><%= document.type %></td>
           <td>#<%= document.current_version.number %></td>
-          <td><%= document.current_version.application_date %></td>
           <td><%= document.current_version.description %></td>
           <td><%= document.current_version.ubication %></td>
           <td><a href="<%= document.doc_url %>" target="_blank">Show Document</a></td>
