@@ -16,11 +16,9 @@ class VersionsController < ApplicationController
       drive_id = response.body["id"]
       @version.docdrive_id = drive_id
       @version.document_id = @document.id
-      #version.doc_type = document.current_version.doc_type
-
+      
     if @version.save
       @version.document_id = @document.id
-      #@document.update(current_version: @version)
       redirect_to document_path(@document)
     else
       render :new
@@ -40,6 +38,6 @@ class VersionsController < ApplicationController
 
   private
     def versions_params
-      params.require(:version).permit(:ubication, :title, :description, :application_date, :status)
+      params.require(:version).permit(:ubication, :title, :description, :application_date)
     end
 end

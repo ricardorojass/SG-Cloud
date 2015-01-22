@@ -5,8 +5,5 @@ class Version < ActiveRecord::Base
   
   enum status: [:in_proccess, :revised, :approved, :rejected]
 
-  
-  #def status_by_role(user)
-  #end
 
 end

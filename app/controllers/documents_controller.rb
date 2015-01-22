@@ -35,8 +35,6 @@ class DocumentsController < ApplicationController
     @document.current_version.docdrive_id = drive_id
     @document.current_version.document_id = @document.id
 
-    #title = response.body["title"]
-    #@document.current_version.title = title
     @document.current_version.save
     redirect_to documents_path
 
