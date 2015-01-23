@@ -38,7 +38,7 @@
         <td>#<%= @document.current_version.number %></td>
         <td><%= @document.current_version.description %></td>
         <td><%= @document.current_version.ubication %></td>
-        <td><%= link_to 'Back', documents_path, class: "btn btn-default" %></td>
+        <td><%= link_to 'Back', documents_path, class: "btn btn-default btn-sm" %></td>
       </tr>
     </tbody>
   </table>
@@ -68,9 +68,9 @@
           <td><%= version.created_at %></td>
           <td><%= version.description %></td>
           <td><%= version.ubication %></td>
-          <td><a href="<%= @document.doc_url %>" target="_blank">Show Document</a></td>
-          <td><%= link_to 'Edit', edit_document_version_path(@document, version), class: "btn btn-default" %></td>
-          <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+          <td class="text-white"><a href="<%= @document.doc_url %>" class="btn btn-info btn-sm" target="_blank">Show Document</a></td>
+          <td><%= link_to 'Edit', edit_document_version_path(@document, version), class: "btn btn-default btn-sm" %></td>
+          <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>
