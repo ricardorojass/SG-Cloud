@@ -19,9 +19,6 @@ class VersionsController < ApplicationController
       
     if @version.save
       @version.document_id = @document.id
-      redirect_to document_path(@document)
-    else
-      render :new
     end
   end
 
@@ -38,6 +35,6 @@ class VersionsController < ApplicationController
 
   private
     def versions_params
-      params.require(:version).permit(:ubication, :title, :description, :application_date)
+      params.require(:version).permit(:ubication, :title, :description)
     end
 end

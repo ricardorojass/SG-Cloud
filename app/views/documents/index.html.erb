@@ -7,8 +7,12 @@
            New <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<%= new_document_path(doc_type: "doc") %>">Document - Word</a></li>
-          <li><a href="<%= new_document_path(doc_type: "excel") %>">Document - Excel</a></li>
+          <li>
+            <%= link_to 'Document - Word', new_document_path(doc_type: "doc"), remote: true %>
+          </li>
+          <li>
+            <%= link_to 'Document - Excel', new_document_path(doc_type: "excel"), remote: true %>
+          </li>
         </ul>
       </div> 
     </div>
@@ -24,7 +28,6 @@
         <th>Origin</th>
         <th>Type</th>
         <th>Number</th>
-        <th>Apply date</th>
         <th>Description</th>
         <th>Ubication</th>
         <th colspan="5"></th>
@@ -51,12 +54,11 @@
           <td><%= document.origin %></td>
           <td><%= document.type %></td>
           <td>#<%= document.current_version.number %></td>
-          <td><%= document.current_version.application_date %></td>
           <td><%= document.current_version.description %></td>
           <td><%= document.current_version.ubication %></td>
           <td><a href="<%= document.doc_url %>" target="_blank">Show Document</a></td>
           <td><%= link_to 'Show', document %></td>
-          <td><%= link_to 'Edit', edit_document_path(document), class: "btn btn-default" %></td>
+          <td><%= link_to 'Edit', edit_document_path(document), remote: true, class: "btn btn-default" %></td>
           <td class="text-white"><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>

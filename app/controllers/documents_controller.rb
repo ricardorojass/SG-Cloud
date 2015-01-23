@@ -19,25 +19,25 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     @document.current_version.number = @document.versions.count + 1
-    @document.save
+    
+    if @document.save
+      mimeType = "application/vnd.google-apps.document"
+      if @document.doc_type == "excel"
+        mimeType = "application/vnd.google-apps.spreadsheet"
+      end
 
-    mimeType = "application/vnd.google-apps.document"
-    if @document.doc_type == "excel"
-      mimeType = "application/vnd.google-apps.spreadsheet"
+      puts "Session: #{session[:access_token]}"
+      response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
+        headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
+        parameters: {title: "doc-#{@document.id}", mimeType: mimeType }.to_json
+
+      drive_id = response.body["id"]
+      @document.current_version.docdrive_id = drive_id
+      @document.current_version.document_id = @document.id
+
+      @document.current_version.save
     end
-
-    puts "Session: #{session[:access_token]}"
-    response = Unirest.post "https://www.googleapis.com/drive/v2/files?convert=true", 
-      headers:{"Authorization" => "Bearer #{session[:access_token]}", "Content-Type" => "application/json"}, 
-      parameters: {title: "doc-#{@document.id}", mimeType: mimeType }.to_json
-
-    drive_id = response.body["id"]
-    @document.current_version.docdrive_id = drive_id
-    @document.current_version.document_id = @document.id
-
-    @document.current_version.save
-    redirect_to documents_path
-
+    #redirect_to documents_path
 
     #s = GoogleDrive.login_with_oauth(session[:access_token])
     #s.upload_from_string(
@@ -72,6 +72,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, :doc_type, current_version_attributes: [:number, :ubication, :title, :application_date, :description])
+      params.require(:document).permit(:code, :origin, :type, :doc_type, current_version_attributes: [:number, :ubication, :title, :description])
     end
 end

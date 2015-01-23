@@ -1,0 +1,6 @@
+<% if !@version.errors.empty? %>
+  alert("algo salio mal");
+<% else %>
+  $('.modal').modal('hide');
+  $('#versions').load("/documents/<%= @document.id %> #versions");
+<% end %>

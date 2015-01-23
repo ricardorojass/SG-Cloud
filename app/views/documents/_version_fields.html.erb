@@ -1,11 +1,10 @@
-<div class="form-documents">
-  <%= f.date_field :application_date %></br>
+<div class="form-group">
+  <%= f.label :description %></br>
+  <%= f.text_area :description, class: "form-control" %>
 </div>
-<div class="form-documents">
-  <%= f.text_area :description, size: "33x3", placeholder: "Description" %></br>
-</div>
-<div class="form-documents">
-  <%= f.text_field :ubication, placeholder: "Ubication" %></br>
+<div class="form-group">
+  <%= f.label :ubication %></br>
+  <%= f.text_field :ubication, class: "form-control"  %>
 </div>
 
 

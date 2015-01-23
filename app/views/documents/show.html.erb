@@ -7,7 +7,9 @@
            New <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<%= new_document_version_path(@document, @version) %>">Version</a></li>
+          <li>
+            <%= link_to 'Version', new_document_version_path(@document, @version), remote: true %>
+          </li>
         </ul>
       </div> 
     </div>
@@ -47,7 +49,7 @@
 <h2>Versions</h2>
 
 <div class="table table-responsive">
-  <table class="table table-hover">
+  <table id="versions" class="table table-hover">
     <thead>
       <tr class="head-table">
         <th>Number</th>
