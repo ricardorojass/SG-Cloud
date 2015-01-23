@@ -31,6 +31,7 @@ class VersionsController < ApplicationController
 
   def update_status
     @version = Version.update(params[:version_id], status: params[:status].to_i)
+    redirect_to documents_path
   end
 
   private

@@ -43,7 +43,7 @@
                 <ul class="dropdown-menu status-dropdown" role="menu">
                   <% Version.statuses.each do |key, value| %>
                     <li>
-                      <%= link_to key.humanize, document_version_status_path(document_id: document.id, version_id: document.current_version.id, status: value), remote: true %>
+                      <%= link_to key.humanize, document_version_status_path(document_id: document.id, version_id: document.current_version.id, status: value) %>
                     </li>
                   <% end %>
                 </ul>  
