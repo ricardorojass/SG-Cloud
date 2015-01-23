@@ -19,9 +19,6 @@ class VersionsController < ApplicationController
       
     if @version.save
       @version.document_id = @document.id
-      redirect_to document_path(@document)
-    else
-      render :new
     end
   end
 
