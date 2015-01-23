@@ -1,0 +1,6 @@
+<% if !@document.errors.empty? %>
+  alert("algo salio mal:" + <%= @document.errors.full_messages%>);
+<% else %>
+  $('.modal').modal('hide');
+  $('#documents').load('/documents #documents');
+<% end %>

@@ -45,15 +45,7 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
-    end
+    @document.update(document_params)
   end
 
   def destroy
@@ -72,6 +64,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:code, :origin, :type, :doc_type, current_version_attributes: [:number, :ubication, :title, :description])
+      params.require(:document).permit(:code, :origin, :type, :doc_type, current_version_attributes: [:id, :number, :ubication, :title, :description])
     end
 end

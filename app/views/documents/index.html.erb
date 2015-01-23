@@ -58,7 +58,7 @@
           <td><%= document.current_version.ubication %></td>
           <td><a href="<%= document.doc_url %>" target="_blank">Show Document</a></td>
           <td><%= link_to 'Show', document %></td>
-          <td><%= link_to 'Edit', edit_document_path(document), remote: true, class: "btn btn-default" %></td>
+          <td><%= link_to 'Edit', edit_document_path(document, doc_type: document.doc_type), remote: true, class: "btn btn-default" %></td>
           <td class="text-white"><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
         </tr>
       <% end %>
