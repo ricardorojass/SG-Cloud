@@ -38,7 +38,6 @@
         <td>#<%= @document.current_version.number %></td>
         <td><%= @document.current_version.description %></td>
         <td><%= @document.current_version.ubication %></td>
-        <td><%= link_to 'Edit', edit_document_path(@document), class: "btn btn-default" %></td>
         <td><%= link_to 'Back', documents_path, class: "btn btn-default" %></td>
       </tr>
     </tbody>
