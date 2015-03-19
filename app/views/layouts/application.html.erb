@@ -7,15 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? %>
-  <%= render 'layouts/header' %>
-<% end %>
+<%= render 'layouts/header' if user_signed_in? %>
 
   <%# flash.each do |name, msg| %>
     <%#= content_tag(:div, msg, class: "alert alert-info") %>
   <%# end %>
 <%= yield %>
 
-<%= render 'layouts/footer' %>
+<%= render 'layouts/footer' unless user_signed_in?  %>
 </body>
 </html>
