@@ -1,3 +1,4 @@
+<% provide(:title, "Show Document") %>
 <!-- Subnavbar -->
 <div class="navbar subnavbar">
     <div class="collapse navbar-collapse">
@@ -11,7 +12,7 @@
             <%= link_to 'Version', new_document_version_path(@document, @version), remote: true %>
           </li>
         </ul>
-      </div> 
+      </div>
     </div>
 </div>
 
@@ -38,7 +39,7 @@
         <td>#<%= @document.current_version.number %></td>
         <td><%= @document.current_version.description %></td>
         <td><%= @document.current_version.ubication %></td>
-        <td><%= link_to 'Back', documents_path, class: "btn btn-default btn-sm" %></td>
+        <td class="text-white"><%= link_to 'Back', documents_path, class: "btn btn-success btn-sm" %></td>
       </tr>
     </tbody>
   </table>
@@ -70,7 +71,7 @@
           <td><%= version.ubication %></td>
           <td class="text-white"><a href="<%= @document.doc_url %>" class="btn btn-info btn-sm" target="_blank">Show Document</a></td>
           <td><%= link_to 'Edit', edit_document_version_path(@document, version), class: "btn btn-default btn-sm" %></td>
-          <td><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-sm" %></td>
+          <td class="text-white"><%= link_to 'Destroy', [@document, version], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -78,8 +79,3 @@
 
 </div>
 
-
-
-
-
-  

@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Docsricardo</title>
+  <title><%= yield(:title) %> | Sg Cloud </title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? %>
-  <%= render 'layouts/header' %>
-<% end %>
+<%= render 'layouts/header' if user_signed_in? %>
 
   <%# flash.each do |name, msg| %>
     <%#= content_tag(:div, msg, class: "alert alert-info") %>
   <%# end %>
 <%= yield %>
-  
 
+<%= render 'layouts/footer' unless user_signed_in?  %>
 </body>
 </html>

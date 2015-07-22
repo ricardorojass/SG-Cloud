@@ -1,3 +1,5 @@
+<% provide(:title, "Welcome") %>
+
 <div class="content-main text-center text-white">
   <div class="container">
     <div class="row">
@@ -10,19 +12,11 @@
   <div class="leading">
     <span>
       Todo tu sistema de gestión, estés donde estés.
-    </span> 
+    </span>
   </div>
   <% unless user_signed_in? %>
     <span class="text-sign-in">
       <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-lg button-red" %>
     </span>
   <% end %>
-  
-</div> 
-<div class="container text-center">
-  <div class="footer grey">
-    <span>
-      &copy; 2015 SG-Cloud 
-    </span>
-  </div>
 </div>
